@@ -17,12 +17,16 @@ const io = new Server(server, {
 })
 
 io.on("connection", socket => {
-    console.log(`User Connected ID: ${socket.id}`)
-
+    //console.log(`User Connected ID: ${socket.id}`)
 
     socket.on("join_room", roomName => {
         socket.join(roomName)
-        console.log(`User with ID: ${socket.id} joined room: ${roomName}`)
+        //console.log(`User with ID: ${socket.id} joined room: ${roomName}`)
+    })
+
+    socket.on("leave_room", roomName => {
+        socket.leave(roomName)
+        //console.log(`User with ID: ${socket.id} leaving room: ${roomName}`)
     })
 
     socket.on("send_message", data => {
@@ -31,7 +35,7 @@ io.on("connection", socket => {
     })
 
     io.on("disconnect", () => {
-        console.log(`User Disconnected: ${socket.id}`)
+        //console.log(`User Disconnected: ${socket.id}`)
     })
 })
 
